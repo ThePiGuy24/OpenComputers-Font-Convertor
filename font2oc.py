@@ -54,7 +54,7 @@ with open("font.hex", "w") as fontfile:
 	for char in fontdict:
 		try:
 			pixels = pygame.PixelArray(font.render(chr(char),False,(255,255,255),(0,0,0)))
-		except (TypeError, UnicodeError, ValueError):
+		except (TypeError, UnicodeError, ValueError, pygame.error):
 			pixels = pygame.PixelArray(font.render("?",False,(255,255,255),(0,0,0)))
 		fontfile.write(padhex(char,4)+":")
 		for y in range(16):
